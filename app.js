@@ -15,7 +15,7 @@ var express          = require('express'),
     indexRoutes      = require("./routes/index");
 
 // seedDB();
-mongoose.connect("mongodb://localhost/yelp_camp");
+// mongoose.connect("mongodb://localhost/yelp_camp");
 mongoose.connect("mongodb+srv://yelpcamp:yelpcamp123@cluster0-3pmxp.mongodb.net/test");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine','ejs');
