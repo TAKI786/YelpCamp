@@ -16,7 +16,8 @@ var express          = require('express'),
 
 // seedDB();
 // mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect("mongodb+srv://yelpcamp:yelpcamp123@cluster0-3pmxp.mongodb.net/test");
+mongoose.connect("mongodb+srv://yelpcamp:yelpcamp123@cluster0-3pmxp.mongodb.net/test?retryWrites=true&w=majority");
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine','ejs');
 app.use(require("express-session")({
