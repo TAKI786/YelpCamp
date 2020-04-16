@@ -18,9 +18,9 @@ var express          = require('express'),
 // mongoose.connect("mongodb://localhost/yelp_camp");
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Yelpcamp:yelpcamp123@cluster0-3pmxp.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlPaser: true});
+const client = new MongoClient(uri, { useNewUrlParser: true});
 client.connect(err => {
-    const collectin = client.db("test").collection("devices");
+    const collection = client.db("test").collection("devices");
     client.close();
 });
 
