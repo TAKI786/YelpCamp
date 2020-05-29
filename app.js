@@ -1,4 +1,4 @@
-var express          = require('express'),
+var express          = require('express'), 
     app              = express(),
     bodyParser       = require('body-parser'),
     mongoose         = require('mongoose'),
@@ -12,17 +12,28 @@ var express          = require('express'),
     methodOverride   = require('method-override'),
     commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
-    indexRoutes      = require("./routes/index");
+    indexRoutes      = require("./routes/index")
+    cors             = require("cors");
+
+require("dotenv").config();
+app.use(cors());
+
 
 // seedDB();
-// mongoose.connect("mongodb://localhost/yelp_camp");
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Yelpcamp:yelpcamp123@cluster0-3pmxp.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true});
-client.connect(err => {
-    const collection = client.db("test").collection("devices");
-    client.close();
-});
+mongoose.connect("mongodb://localhost/yelp_camp");
+// const MongoClient = require('mongodb').MongoClient;
+// const assert = require('assert');
+
+// const uri = "mongodb://Yelpcamp:yelpcamp123@cluster0-3pmxp.mongodb.net/test?ssl=true&w=majority";
+const uri = "mongodb+srv://yelpcamp:12345@cluster0-3pmxp.mongodb.net/test?retryWrites=true&w=majority";
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => {
+  console.log("MongoDB Connected…");
+})
+.catch(err => console.log(err))
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine','ejs');

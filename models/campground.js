@@ -1,5 +1,5 @@
-
-  var mongoose   = require('mongoose');
+ 
+var mongoose   = require('mongoose');
 
 //  SCHEMA SETUP
 var campgroundSchema = new mongoose.Schema({
