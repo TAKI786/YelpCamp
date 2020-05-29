@@ -29,11 +29,18 @@ const uri = "mongodb+srv://yelpcamp:12345@cluster0-3pmxp.mongodb.net/test?retryW
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-})
-.then(() => {
-  console.log("MongoDB Connected…");
-})
-.catch(err => console.log(err))
+});
+
+mongoose.connection.on('connected',() =>{
+	console.log('mongoose is connected.');
+});
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false}));
+// .then(() => {
+//   console.log("MongoDB Connected…");
+// })
+// .catch(err => console.log(err))
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine','ejs');
