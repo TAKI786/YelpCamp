@@ -75,8 +75,8 @@ function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
         return next();
     }
-    req.flash("error", "Please Login First !!"); 
-    res.redirect("/login");
+    req.flash("error", "Please \"SignUp\" First !!  \n  If already have account then \"Login \" "); 
+    res.redirect("/register");
 }
 
 function checkOwner(req, res, next){
