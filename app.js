@@ -7,12 +7,11 @@ var express          = require('express'),
     Campground       = require('./models/campground.js'),
     Comment          = require('./models/comment.js'),
     User             = require('./models/user'),
-    // seedDB           = require("./seeds"),
     flash            = require("connect-flash"),
     methodOverride   = require('method-override'),
     commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
-    indexRoutes      = require("./routes/index")
+    indexRoutes      = require("./routes/index"),
     cors             = require("cors");
 
 require("dotenv").config();
@@ -20,27 +19,44 @@ app.use(cors());
 
 
 // seedDB();
+// mongo "mongodb+srv://cluster0-3pmxp.mongodb.net/test" --username yelpcamp
 mongoose.connect("mongodb://localhost/yelp_camp");
+// mongoose.connect("mongodb+srv://yelpcamp:12345@cluster0-3pmxp.mongodb.net/test?retryWrites=true&w=majority");
 // const MongoClient = require('mongodb').MongoClient;
 // const assert = require('assert');
 
 // const uri = "mongodb://Yelpcamp:yelpcamp123@cluster0-3pmxp.mongodb.net/test?ssl=true&w=majority";
-const uri = "mongodb+srv://yelpcamp:12345@cluster0-3pmxp.mongodb.net/test?retryWrites=true&w=majority";
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+// const uri = "mongodb+srv://yelpcamp:12345@cluster0-3pmxp.mongodb.net/test?retryWrites=true&w=majority";
+// mongoose.connect(uri, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
 
-mongoose.connection.on('connected',() =>{
-	console.log('mongoose is connected.');
-});
+// mongoose.connection.on('connected',() =>{
+// 	console.log('mongoose is connected.');
+// });
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false}));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: false}));
 // .then(() => {
 //   console.log("MongoDB Connected…");
 // })
 // .catch(err => console.log(err))
+
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://yelpcamp:12345@cluster0-3pmxp.mongodb.net/test?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
+// var MongoClient = require('mongodb').MongoClient;
+
+// var uri = "mongodb+srv://yelpcamp:12345@cluster0-3pmxp.mongodb.net/test?retryWrites=true&w=majority";
+// MongoClient.connect(uri, function(err, db) {
+//   db.close();
+// });
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine','ejs');
