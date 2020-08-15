@@ -19,44 +19,19 @@ app.use(cors());
 
 
 // seedDB();
-// mongo "mongodb+srv://cluster0-3pmxp.mongodb.net/test" --username yelpcamp
-mongoose.connect(process.env.MONGODB_URI" || "mongodb://localhost/yelp_camp");
-// mongoose.connect("mongodb+srv://yelpcamp:12345@cluster0-3pmxp.mongodb.net/test?retryWrites=true&w=majority");
-// const MongoClient = require('mongodb').MongoClient;
-// const assert = require('assert');
 
-// const uri = "mongodb://Yelpcamp:yelpcamp123@cluster0-3pmxp.mongodb.net/test?ssl=true&w=majority";
-// const uri = "mongodb+srv://yelpcamp:12345@cluster0-3pmxp.mongodb.net/test?retryWrites=true&w=majority";
-// mongoose.connect(uri, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yelp_camp");
 
-// mongoose.connection.on('connected',() =>{
-// 	console.log('mongoose is connected.');
-// });
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://Taki:Taki@yelp.3pmxp.mongodb.net/Yelp?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false}));
-// .then(() => {
-//   console.log("MongoDB Connected…");
-// })
-// .catch(err => console.log(err))
 
-// const MongoClient = require('mongodb').MongoClient;
-// const uri = "mongodb+srv://yelpcamp:12345@cluster0-3pmxp.mongodb.net/test?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
-// var MongoClient = require('mongodb').MongoClient;
-
-// var uri = "mongodb+srv://yelpcamp:12345@cluster0-3pmxp.mongodb.net/test?retryWrites=true&w=majority";
-// MongoClient.connect(uri, function(err, db) {
-//   db.close();
-// });
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine','ejs');
