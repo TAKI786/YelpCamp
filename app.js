@@ -20,7 +20,7 @@ app.use(cors());
 
 // seedDB();
 // mongo "mongodb+srv://cluster0-3pmxp.mongodb.net/test" --username yelpcamp
-mongoose.connect(process.env.MONGODB_URI"mongodb://localhost/yelp_camp");
+mongoose.connect(process.env.MONGODB_URI" || "mongodb://localhost/yelp_camp");
 // mongoose.connect("mongodb+srv://yelpcamp:12345@cluster0-3pmxp.mongodb.net/test?retryWrites=true&w=majority");
 // const MongoClient = require('mongodb').MongoClient;
 // const assert = require('assert');
